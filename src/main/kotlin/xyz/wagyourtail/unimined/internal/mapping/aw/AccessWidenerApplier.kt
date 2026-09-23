@@ -1,5 +1,6 @@
 package xyz.wagyourtail.unimined.internal.mapping.aw
 
+import farn.uaf.UniminedAccessWidenerRemapOption
 import kotlinx.coroutines.runBlocking
 import net.fabricmc.classtweaker.api.ClassTweaker
 import net.fabricmc.classtweaker.api.ClassTweakerReader
@@ -33,8 +34,6 @@ import java.nio.file.StandardOpenOption
 import kotlin.io.path.*
 
 object AccessWidenerApplier {
-
-    var remapToIntermediary = true;
 
     class AwRemapper(val source: String, val target: String, val catchNsError: Boolean, val logger: Logger?): ResourceRemapper {
         constructor(source: String, target: String): this(source, target, false, null)
@@ -73,7 +72,7 @@ object AccessWidenerApplier {
 
     fun nsName(config: MappingsConfig<*>, namespace: Namespace) =
         if (config.devNamespace != namespace) {
-            if(remapToIntermediary) {
+            if(UniminedAccessWidenerRemapOption.remapToIntermediary) {
                 "intermediary"
             } else {
                 "official"
@@ -180,9 +179,5 @@ object AccessWidenerApplier {
         }
 
         return output
-    }
-
-    fun setRemapToIntermediary(value: Boolean) {
-        remapToIntermediary = value
     }
 }
