@@ -34,6 +34,8 @@ import kotlin.io.path.*
 
 object AccessWidenerApplier {
 
+    var remapToIntermediary = true;
+
     class AwRemapper(val source: String, val target: String, val catchNsError: Boolean, val logger: Logger?): ResourceRemapper {
         constructor(source: String, target: String): this(source, target, false, null)
         override fun canTransform(remapper: TinyRemapper, relativePath: Path): Boolean {
@@ -71,7 +73,11 @@ object AccessWidenerApplier {
 
     fun nsName(config: MappingsConfig<*>, namespace: Namespace) =
         if (config.devNamespace != namespace) {
-            "official" // -_-
+            if(remapToIntermediary) {
+                "intermediary"
+            } else {
+                "official"
+            }
         } else if (config.minecraft.minecraftData.mcVersionCompare(config.minecraft.version, "1.21.11") > 0) {
             "official"
         } else {
@@ -174,5 +180,9 @@ object AccessWidenerApplier {
         }
 
         return output
+    }
+
+    fun setRemapToIntermediary(value: Boolean) {
+        remapToIntermediary = value
     }
 }
