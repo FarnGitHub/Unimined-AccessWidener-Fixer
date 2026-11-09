@@ -16,9 +16,21 @@ repositories {
 
 dependencies {
     implementation("xyz.wagyourtail.unimined:unimined:1.4.2-SNAPSHOT") {
-        //isTransitive = false
+        isTransitive = true
+    }
+    implementation("org.ow2.asm:asm:9.8") {
+        isTransitive = false
+    }
+    implementation("org.ow2.asm:asm-commons:9.8") {
+        isTransitive = false
     }
     implementation("net.fabricmc:tiny-remapper:0.11.2") {
+        isTransitive = false
+    }
+    implementation("com.google.code.gson:gson:2.13.1") {
+        isTransitive = false
+    }
+    /*implementation("net.fabricmc:tiny-remapper:0.11.2") {
         isTransitive = false
     }
     implementation("com.squareup.okio:okio-jvm:3.7.0") {
@@ -47,7 +59,7 @@ dependencies {
     }
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.6.2") {
         isTransitive = false
-    }
+    }*/
 }
 
 kotlin {
