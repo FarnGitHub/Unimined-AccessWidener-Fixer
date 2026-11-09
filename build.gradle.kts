@@ -30,9 +30,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.13.1") {
         isTransitive = false
     }
-    /*implementation("net.fabricmc:tiny-remapper:0.11.2") {
-        isTransitive = false
-    }
     implementation("com.squareup.okio:okio-jvm:3.7.0") {
         isTransitive = false
     }
@@ -51,15 +48,9 @@ dependencies {
     implementation("net.fabricmc:class-tweaker:0.2") {
         isTransitive = false
     }
-    implementation("org.ow2.asm:asm:9.8") {
-        isTransitive = false
-    }
-    implementation("org.ow2.asm:asm-commons:9.8") {
-        isTransitive = false
-    }
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.6.2") {
         isTransitive = false
-    }*/
+    }
 }
 
 kotlin {
